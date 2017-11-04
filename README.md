@@ -2,6 +2,23 @@
 
 This Golang package is a personal **micro**library to help developing scripts that transforms large numbers of text files. It's being built to make programatic changes to thousands of html files.
 
+## Include library
+
+To include the libray on your project, first download it:
+
+```bash
+go get github.com/osvik/txttransformer
+```
+
+And import it in your code:
+
+```go
+import (
+    "github.com/osvik/txttransformer"
+)
+```
+
+
 ## File functions
 
 Functions to read, write, search and filter files and paths.
