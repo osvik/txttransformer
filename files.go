@@ -1,6 +1,7 @@
 package txttransformer
 
 import (
+	"encoding/csv"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -34,6 +35,30 @@ func FilterPaths(f []string, ext string) []string {
 
 	}
 	return filtered
+}
+
+// ReadListPaths Reads a text file with a list of file paths.
+func ReadListPaths(filename string) []string {
+	file, err := os.Open(filename)
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	reader.Comma = ','
+	// lineCount := 0
+
+	allRecords, err := reader.ReadAll()
+	if err != nil {
+		panic(err)
+	}
+
+	var allPaths []string
+	for _, v := range allRecords {
+		allPaths = append(allPaths, v[0])
+	}
+	return allPaths
+
 }
 
 // PrintListPaths Prints the list of files.
