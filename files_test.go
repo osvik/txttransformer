@@ -133,3 +133,26 @@ func Test_WriteTextFile(t *testing.T) {
 		})
 	}
 }
+
+func TestReadListPaths(t *testing.T) {
+	type args struct {
+		filename string
+	}
+	tests := []struct {
+		name string
+		args args
+		want []string
+	}{
+		{name: "y1",
+			want: []string{"1.txt", "baz/2.txt", "3.txt"},
+			args: args{filename: "testdata/paths.txt"},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := ReadListPaths(tt.args.filename); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("ReadListPaths() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
