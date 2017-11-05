@@ -39,6 +39,14 @@ Filters paths by extension. Use without the dot, like html or txt.
 listTxtPaths := txttransformer.FilterPaths(filesInsideFoo, "txt")
 ```
 
+### ReadListPaths
+
+Reads a list of paths from a txt file. One path per line.
+
+```go
+listTxtPaths := txttransformer.ReadListPaths("paths.txt")
+ ```
+
 ### PrintListPaths
 
 Prints the list of files.
